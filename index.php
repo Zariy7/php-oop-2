@@ -74,9 +74,46 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://kit.fontawesome.com/dcdaab4f9f.js" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="./css/style.css">
         <title>Document</title>
     </head>
     <body>
-        
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="text-center">
+                        Shop Smart: Shop S-Mart!
+                    </h1>
+                    <h2 class="text-center">
+                        Pet Shop Edition
+                    </h2>
+                </div>
+                <div class="col-12">
+                    <div class="row">
+                        <?php 
+                            foreach($products as $product){
+                                echo '<div class="col-3 my-my-7">';
+                                echo '<h4 class="text-center">'.$product->name.'</h4>';
+                                echo '<img src="'.$product->image.'" alt="'.$product->name.'" class="w-100 h-100">';
+                                echo '<div class="fw-bold">Price: <span class="fw-normal">'.number_format($product->price, 2, '.', '').'$</span></div>';
+                                echo '<div class="fw-bold">Species: '.$product->species->logo.'</div>';
+                                echo '<div class="fw-bold">Product Type: '.get_class($product).'</div>';
+                                if(get_class($product) == "Food"){
+                                    echo '<div class="fw-bold">Weight: '.$product->weight.'</div>';
+                                }
+                                if(get_class($product) == "Toy"){
+                                    echo '<div class="fw-bold">Size: '.$product->size.'</div>';
+                                }
+                                if(get_class($product) == "Accessory"){
+                                    echo '<div class="fw-bold">Use: '.$product->use.'</div>';
+                                }
+                                echo '</div>';
+                            }
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

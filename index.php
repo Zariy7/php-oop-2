@@ -13,6 +13,33 @@
         }
     }
 
+    class Food extends Product{
+        public $weight;
+
+        function __construct(String $_name, Float $_price, String $_image, Species $_species, String $_weight){
+            parent::__construct($_name, $_price, $_image, $_species);
+            $this->$weight = $_weight;
+        }
+    }
+
+    class Toys extends Product{
+        public $size;
+
+        function __construct(String $_name, Float $_price, String $_image, Species $_species, String $_size){
+            parent::__construct($_name, $_price, $_image, $_species);
+            $this->$size = $_size;
+        }
+    }
+
+    class Accessories extends Product{
+        public $use;
+
+        function __construct(String $_name, Float $_price, String $_image, Species $_species, String $_use){
+            parent::__construct($_name, $_price, $_image, $_species);
+            $this->$use = $_use;
+        }
+    }
+
     class Species {
         public $species;
         public $logo;

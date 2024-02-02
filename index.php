@@ -1,7 +1,7 @@
 <?php 
     class Product {
         public $name;
-        public $price;
+        private $price;
         public $image;
         public $species;
 
@@ -10,6 +10,10 @@
             $this->price = $_price;
             $this->image = $_image;
             $this->species = $_species;
+        }
+
+        public function getDiscountedPrice($discount){
+            return $this->price*$discount;
         }
     }
 
@@ -96,20 +100,21 @@
                                 echo '<div class="col-3 my-my-7">';
                                 echo '<h4 class="text-center">'.$product->name.'</h4>';
                                 echo '<img src="'.$product->image.'" alt="'.$product->name.'" class="w-100 h-100">';
-                                echo '<div class="fw-bold">Price: <span class="fw-normal">'.number_format($product->price, 2, '.', '').'$</span></div>';
+                                echo '<div class="fw-bold">Price: <span class="fw-normal">'.number_format($product->getDiscountedPrice(1), 2, '.', '').'$</span></div>';
                                 echo '<div class="fw-bold">Species: '.$product->species->logo.'</div>';
-                                echo '<div class="fw-bold">Product Type: '.get_class($product).'</div>';
+                                echo '<div class="fw-bold">Product Type: <span class="fw-normal">'.get_class($product).'</span></div>';
                                 if(get_class($product) == "Food"){
-                                    echo '<div class="fw-bold">Weight: '.$product->weight.'</div>';
+                                    echo '<div class="fw-bold">Weight: <span class="fw-normal">'.$product->weight.'</span></div>';
                                 }
                                 if(get_class($product) == "Toy"){
-                                    echo '<div class="fw-bold">Size: '.$product->size.'</div>';
+                                    echo '<div class="fw-bold">Size: <span class="fw-normal">'.$product->size.'</span></div>';
                                 }
                                 if(get_class($product) == "Accessory"){
-                                    echo '<div class="fw-bold">Use: '.$product->use.'</div>';
+                                    echo '<div class="fw-bold">Use: <span class="fw-normal">'.$product->use.'</span></div>';
                                 }
                                 echo '</div>';
                             }
+
                         ?>
                     </div>
                 </div>
